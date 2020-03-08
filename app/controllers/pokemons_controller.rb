@@ -23,16 +23,21 @@ class PokemonsController < ApplicationController
 
   def create
     @pokemon = Pokemon.new(pokemon_params)
-    
     if @pokemon.save
       redirect_to pokemons_path, notice: "You caught a #{@pokemon.name} !!"
     else
       render :new
     end
+  end
 
+  def destroy
+    pokemon = Pokemon.find(params[:id])
+    pokemon.destroy
   end
   
 
+
+  
   private
   def pokemon_params
     params.require(:pokemon).permit(:order, :name, :image_url)

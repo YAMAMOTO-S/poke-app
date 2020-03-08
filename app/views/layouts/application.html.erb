@@ -16,7 +16,7 @@
           <div class="user_nav grid-6">
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
             <%= link_to  "Caught Pokemon", "/pokemons/new", class: "post" %>
-            <%= link_to 'HOME', pokemons_path %>
+            <%= link_to 'HOME', root_path %>
           </div>
         <% else %>
           <div class="grid-6">
