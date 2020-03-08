@@ -13,7 +13,7 @@ class PokemonsController < ApplicationController
     if raw_response.status == 200
       # ポケモンがあったら
       response = JSON.parse(raw_response.body)
-      @pokemon = Pokemon.new(order: response["id"], name: response["name"], image_url: response["sprites"]["front_female"])
+      @pokemon = Pokemon.new(order: response["id"], name: response["name"], image_url: response["sprites"]["front_default"])
     else
       # なければ
       redirect_to new_pokemon_path, notice: "#{raw_response.status}エラー！"
