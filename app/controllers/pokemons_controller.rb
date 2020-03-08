@@ -1,4 +1,5 @@
 class PokemonsController < ApplicationController
+  before_action :move_to_index, except: [:index]
 
   def index
     @pokemons = Pokemon.all
@@ -36,6 +37,10 @@ class PokemonsController < ApplicationController
   def pokemon_params
     params.require(:pokemon).permit(:order, :name, :image_url)
   end
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
+  
   
 end
 
