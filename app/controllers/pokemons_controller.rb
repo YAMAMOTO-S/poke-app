@@ -1,4 +1,5 @@
 class PokemonsController < ApplicationController
+  before_action :move_to_index, except: [:index]
 
   def index
     @pokemons = Pokemon.all
@@ -12,7 +13,7 @@ class PokemonsController < ApplicationController
     if raw_response.status == 200
       # ポケモンがあったら
       response = JSON.parse(raw_response.body)
-      @pokemon = Pokemon.new(order: response["id"], name: response["name"], image_url: response["sprites"]["front_female"])
+      @pokemon = Pokemon.new(order: response["id"], name: response["name"], image_url: response["sprites"]["front_default"])
     else
       # なければ
       redirect_to new_pokemon_path, notice: "#{raw_response.status}エラー！"
@@ -36,6 +37,10 @@ class PokemonsController < ApplicationController
   def pokemon_params
     params.require(:pokemon).permit(:order, :name, :image_url)
   end
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
+  
   
 end
 
