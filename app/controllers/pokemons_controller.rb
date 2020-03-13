@@ -17,7 +17,9 @@ class PokemonsController < ApplicationController
       textres = JSON.parse(text_response.body)
 
       @pokemon = Pokemon.new(order: response['id'], 
-        name: textres['flavor_text_entries'][0]['flavor_text'], image_url: response["sprites"]["front_default"])
+        name: response['name'], image_url: response["sprites"]["front_default"], 
+          type1: response['types'][0]['type']['name'], type2: response['types'][1]['type']['name'],
+            description: textres['flavor_text_entries'][1]['flavor_text'])
 
     else
       # なければ

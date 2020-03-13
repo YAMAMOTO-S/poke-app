@@ -10,6 +10,8 @@
       <tr>
         <td>Name:</td>
         <td><%= @pokemon.name %></td>
+        <td><%= @pokemon.type1 %>, <%= @pokemon.type2 %></td>
+        <td><%= @pokemon.description %></td>
       </tr>
     </table>
     <%= image_tag(@pokemon.image_url, size: "200") %>
