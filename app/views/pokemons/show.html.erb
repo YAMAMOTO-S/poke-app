@@ -1,0 +1,12 @@
+<div>
+  <%= image_tag(@pokemon.image_url, size: "200") %>
+  <div style="display: flex;" >
+    <h3 style="margin-right: 50px;">name: <%= @pokemon.name %></h3>
+    <h3 style="margin-right: 50px;">type: <%= @pokemon.type1 %></h3>
+    <h3>Id: <%= @pokemon.order %></h3>
+  </div>
+
+  <div class="description">
+    <%= @pokemon.description %>
+  </div>
+</div>
