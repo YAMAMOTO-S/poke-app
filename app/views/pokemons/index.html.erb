@@ -1,17 +1,20 @@
-<h1>All Pokemons that all members cought !!</h1>
+<h1>Pokemons that all members cought !!</h1>
 <p>you wanna cought pokemon, you must login or signup as a member :)</p>
 <%= render "shared/search", { path: new_pokemon_path } %>
 
-<div>
+<div style="display: flex; justify-content: left; max-width: 100%">
   <% if @pokemons.present? %>
     <% @pokemons.each do |pokemon| %>
-      <div style="display: inline-block;">
-        No. <%= pokemon.order %>,
-        Name: <b><%= pokemon.name %></b>
+      <div>
+        <ul>
+          <li>No. <%= pokemon.order %>,</li>
+          <li>Name: <b><%= pokemon.name %></b></li>
+          <li><%= button_to 'Release', "/pokemons/#{pokemon.id}", {method: :delete} %></li>
+        </ul>
       </div>
       <div>
         <%= image_tag(pokemon.image_url, size: "200") %>
       </div>
-  <% end %>
+    <% end %>
   <% end %>
 </div>

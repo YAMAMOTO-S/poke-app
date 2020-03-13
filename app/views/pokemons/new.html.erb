@@ -1,4 +1,4 @@
-<h1>Pokemon</h1>
+<h1>Caught a new Pokemon!!</h1>
 <%= render "shared/search", { path: new_pokemon_path } %>
 <div>
   <% if @pokemon.present? %>
@@ -10,6 +10,8 @@
       <tr>
         <td>Name:</td>
         <td><%= @pokemon.name %></td>
+        <td><%= @pokemon.type1 %>, <%= @pokemon.type2 %></td>
+        <td><%= @pokemon.description %></td>
       </tr>
     </table>
     <%= image_tag(@pokemon.image_url, size: "200") %>
@@ -22,6 +24,6 @@
     <% end %>
 
   <% else %>
-    <p>検索してね！</p>
+    <p>Enter any number from 0 to 800 ;)</p>
   <% end %>
 </div>
