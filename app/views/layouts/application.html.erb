@@ -17,6 +17,7 @@
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
             <%= link_to  "Caught Pokemon", "/pokemons/new", class: "post" %>
             <%= link_to 'HOME', root_path %>
+            Name: <b><%= current_user.nickname %></b>
           </div>
         <% else %>
           <div class="grid-6">
