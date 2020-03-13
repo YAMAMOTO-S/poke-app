@@ -18,7 +18,7 @@ class PokemonsController < ApplicationController
 
       @pokemon = Pokemon.new(order: response['id'], 
         name: response['name'], image_url: response["sprites"]["front_default"], 
-          type1: response['types'][0]['type']['name'], type2: response['types'][1]['type']['name'],
+          type1: response['types'][0]['type']['name'],
             description: textres['flavor_text_entries'][1]['flavor_text'])
 
     else
@@ -47,7 +47,7 @@ class PokemonsController < ApplicationController
   
   private
   def pokemon_params
-    params.require(:pokemon).permit(:order, :name, :image_url)
+    params.require(:pokemon).permit(:order, :name, :image_url, :type1, :description)
   end
   def move_to_index
     redirect_to action: :index unless user_signed_in?
