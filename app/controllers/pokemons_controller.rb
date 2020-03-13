@@ -51,7 +51,7 @@ class PokemonsController < ApplicationController
 
   private
   def pokemon_params
-    params.require(:pokemon).permit(:order, :name, :image_url, :type1, :description)
+    params.require(:pokemon).permit(:order, :name, :image_url, :type1, :description).merge(user_id: current_user.id)
   end
   def move_to_index
     redirect_to action: :index unless user_signed_in?
