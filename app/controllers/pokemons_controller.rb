@@ -4,6 +4,11 @@ class PokemonsController < ApplicationController
   def index
     @pokemons = Pokemon.all
   end
+
+  def show
+    @pokemon = Pokemon.find(params[:id])
+  end
+  
   
 
   def new
@@ -37,14 +42,13 @@ class PokemonsController < ApplicationController
     end
   end
 
+
   def destroy
     pokemon = Pokemon.find(params[:id])
     pokemon.destroy
   end
   
 
-
-  
   private
   def pokemon_params
     params.require(:pokemon).permit(:order, :name, :image_url, :type1, :description)

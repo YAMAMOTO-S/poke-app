@@ -10,6 +10,7 @@
           <li>No. <%= pokemon.order %>,</li>
           <li>Name: <b><%= pokemon.name %></b></li>
           <li><%= button_to 'Release', "/pokemons/#{pokemon.id}", {method: :delete} %></li>
+          <li><%= link_to 'Details', "/pokemons/#{pokemon.id}", {method: :get} %></li>
         </ul>
       </div>
       <div>
