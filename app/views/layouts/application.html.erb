@@ -18,6 +18,7 @@
             <%= link_to  "Caught Pokemon", "/pokemons/new", class: "post" %>
             <%= link_to 'HOME', root_path %>
             Name: <b><%= current_user.nickname %></b>
+            <%= link_to "Mypage", "/users/#{current_user.id}" %>
           </div>
         <% else %>
           <div class="grid-6">
