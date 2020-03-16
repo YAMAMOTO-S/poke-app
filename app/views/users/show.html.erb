@@ -1,4 +1,5 @@
 <%= @nickname %>さんのマイページ
-<% @pokemons.each do |pokemon| %>
+  <% @pokemons.each do |pokemon| %>
     <%= pokemon.name %>
+    <%= image_tag(pokemon.image_url, size: "200") %>
   <% end %>

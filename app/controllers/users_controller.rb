@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
-    @nickname = current_user.nickname
-    @pokemons = current_user.pokemons
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @pokemons = user.pokemons
   end
-  
+
 end

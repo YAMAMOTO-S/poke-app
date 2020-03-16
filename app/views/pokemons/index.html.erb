@@ -8,7 +8,10 @@
       <div>
         <ul>
           <li>No. <%= pokemon.order %>,</li>
-          <li>Name: <b><%= pokemon.name %></b></li>
+          <li>Name: <%= pokemon.name %></li>
+          <a href="/users/<%= pokemon.user.id %>">
+            <li>Trainer: <%= pokemon.user.nickname %></li>
+          </a>
           <li><%= button_to 'Release', "/pokemons/#{pokemon.id}", {method: :delete} %></li>
           <li><%= link_to 'Details', "/pokemons/#{pokemon.id}", {method: :get} %></li>
         </ul>

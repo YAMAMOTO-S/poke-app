@@ -2,7 +2,7 @@ class PokemonsController < ApplicationController
   before_action :move_to_index, except: [:index]
 
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Pokemon.includes(:user)
   end
 
   def show
@@ -24,7 +24,7 @@ class PokemonsController < ApplicationController
       @pokemon = Pokemon.new(order: response['id'], 
         name: response['name'], image_url: response["sprites"]["front_default"], 
           type1: response['types'][0]['type']['name'],
-            description: textres['flavor_text_entries'][2]['flavor_text'])
+            description: textres['flavor_text_entries'][1]['flavor_text'])
 
     else
       # なければ
