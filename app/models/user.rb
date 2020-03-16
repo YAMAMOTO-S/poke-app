@@ -5,4 +5,7 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
 
   has_many :pokemons
+  has_many :favorites
+
+  has_many :favorite_pokemons, through: :favorites, source: :pokemon
 end
