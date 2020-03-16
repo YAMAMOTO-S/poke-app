@@ -2,7 +2,7 @@ class PokemonsController < ApplicationController
   before_action :move_to_index, except: [:index]
 
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Pokemon.includes(:user)
   end
 
   def show
@@ -24,7 +24,7 @@ class PokemonsController < ApplicationController
       @pokemon = Pokemon.new(order: response['id'], 
         name: response['name'], image_url: response["sprites"]["front_default"], 
           type1: response['types'][0]['type']['name'],
-            description: textres['flavor_text_entries'][2]['flavor_text'])
+            description: textres['flavor_text_entries'][1]['flavor_text'])
 
     else
       # なければ
@@ -51,7 +51,7 @@ class PokemonsController < ApplicationController
 
   private
   def pokemon_params
-    params.require(:pokemon).permit(:order, :name, :image_url, :type1, :description)
+    params.require(:pokemon).permit(:order, :name, :image_url, :type1, :description).merge(user_id: current_user.id)
   end
   def move_to_index
     redirect_to action: :index unless user_signed_in?
