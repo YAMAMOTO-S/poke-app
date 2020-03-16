@@ -8,5 +8,6 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = Favorite.find_by(pokemon_id: params[:pokemon_id], user_id: current_user.id)
     favorite.destroy
+    redirect_to root_path
   end
 end

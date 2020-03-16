@@ -22,7 +22,7 @@
         <%= image_tag(pokemon.image_url, size: "200") %>
       <% if user_signed_in? %>
         <% if pokemon.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-            <p><span>Favorite: </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :delete %></p>
+            <p><span>UnFavorite: </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :delete %></p>
         <% else %>
             <p><span>Favorite: </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :post %></p>
         <% end %>

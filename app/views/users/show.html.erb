@@ -3,3 +3,9 @@
     <%= pokemon.name %>
     <%= image_tag(pokemon.image_url, size: "200") %>
   <% end %>
+
+  <h1>pokemon that you favorited</h1>
+    <% @fav_pokemons.each do |pokemon| %>
+      <%= pokemon.name %>
+      <%= image_tag(pokemon.image_url, size: "200") %>
+    <% end %>
