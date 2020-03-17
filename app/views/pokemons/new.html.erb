@@ -23,13 +23,15 @@
           <th></th>
           <th>No</th>
           <th>Name</th>
-          <th>Description</th>
+          <th>Type</th>
+          <th>Flavor text</th>
         </tr>
         <% if @pokemon.present? %>
         <tr>
           <td><%= image_tag(@pokemon.image_url, size: "200") %></td>
           <td><%= @pokemon.order %></td>
           <td><%= @pokemon.name %></td>
+          <td><%= @pokemon.type1 %></td>
           <td class="pokedes"><%= @pokemon.description %></td>
         </tr>
         <% end %>

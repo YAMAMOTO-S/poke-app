@@ -1,12 +1,50 @@
-<div>
-  <%= image_tag(@pokemon.image_url, size: "200") %>
-  <div style="display: flex;" >
-    <h3 style="margin-right: 50px;">name: <%= @pokemon.name %></h3>
-    <h3 style="margin-right: 50px;">type: <%= @pokemon.type1 %></h3>
-    <h3>Id: <%= @pokemon.order %></h3>
+<div class="container">
+  <div class="poketeble">
+      <table>
+        <tr>
+          <th></th>
+          <th>No</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Trainer</th>
+          <th>Favorite</th>
+        </tr>
+        <% if @pokemon.present? %>
+        <tr>
+          <td><%= image_tag(@pokemon.image_url, size: "200") %></td>
+          <td><%= @pokemon.order %></td>
+          <td><%= @pokemon.name %></td>
+          <td><%= @pokemon.type1 %></td>
+          <td><a href="/users/<%= @pokemon.user.id %>">
+              Trainer: <%= @pokemon.user.nickname %>
+            </a></td>
+
+          <td><% if user_signed_in? %>
+            <% if @pokemon.favorited_by?(current_user) %>
+            <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+            <p><span>UnFavorite:
+              </span><%=link_to @pokemon.favorites.count, pokemon_favorites_path(@pokemon.id), method: :delete %></p>
+            <% else %>
+            <p><span>Favorite:
+              </span><%=link_to @pokemon.favorites.count, pokemon_favorites_path(@pokemon.id), method: :post %></p>
+            <% end %>
+            <% else %>
+            <p><span>Number of favorites: </span><%= @pokemon.favorites.count %></p>
+            <% end %></td>
+            
+        </tr>
+        <% end %>
+      </table>
   </div>
 
-  <div class="description">
-    <%= @pokemon.description %>
+  <div class="desc">
+    <% if @pokemon.present? %>
+    <div class="card">
+      <div class="card-content white-text">
+        <span class="card-title center-align">Flaver text</span>
+        <p class="center-align"><%= @pokemon.description %></p>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
