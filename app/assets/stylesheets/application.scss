@@ -15,7 +15,50 @@
  *= require_self
  */
 @import 'materialize';
-
 .nav-wrapper {
   background-color: #FB9D7E;
+}
+.mainimages {
+  position: relative;
+}
+.mainimages h1 {
+  position: absolute;
+  color: white;
+  top: 30%;
+  left: 42%;
+}
+.maintext h2{
+  color: #FB9D7E;
+}
+.icons i {
+  color: #F8CD9E;
+  margin-top: 50px;
+}
+.icons h5 {
+  color: #AE9890;
+}
+.searchbtn a{
+  background-color: #F8CD9E;
+}
+.searchbtn input {
+  color: #AE9890;
+}
+.searchbtn p {
+  color: #AE9890;
+}
+.pokemons {
+  overflow: scroll;
+  display: flex;
+}
+.pokemaintext h3{
+  color: #FB9D7E;
+}
+table {
+  margin-top: 50px;
+  td {
+    color: #AE9890;
+  }
+  th{
+    color: #F8CD9E;
+  }
 }

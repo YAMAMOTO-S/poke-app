@@ -1,37 +1,74 @@
-<h1>Pokemons that all members cought !!</h1>
-<p>you wanna cought pokemon, you must login or signup as a member :)</p>
-<%= render "shared/search", { path: new_pokemon_path } %>
+<div class="mainimages">
+  <%= image_tag 'main.jpeg', style: "height: 700px; width: 100%" %>
+  <a href="new_user_registration_path">
+    <h1>Let's Start !!</h1>
+  </a>
+</div>
 
-<div style="display: flex; justify-content: left; max-width: 100%">
-  <% if @pokemons.present? %>
-    <% @pokemons.each do |pokemon| %>
-      <div>
-        <ul>
-          <li>No. <%= pokemon.order %>,</li>
-          <li>Name: <%= pokemon.name %></li>
-          <a href="/users/<%= pokemon.user.id %>">
-            <li>Trainer: <%= pokemon.user.nickname %></li>
-          </a>
-          <% if user_signed_in? && current_user.id == pokemon.user_id%>
-            <li><%= button_to 'Release', "/pokemons/#{pokemon.id}", {method: :delete} %></li>
+<div class="container">
+  <div class="row maintext">
+    <h2 class="col s12 center-align">Catch and Shere </h2>
+    <div class="row center-align icons">
+      <div class="col s4">
+        <i class="large material-icons">search</i>
+        <h5>search your Pokemons</h5>
+      </div>
+      <div class="col s4">
+        <i class="large material-icons">library_add</i>
+        <h5>add pokemons</h5>
+      </div>
+      <div class="col s4">
+        <i class="large material-icons">mood</i>
+        <h5>collect and shere it </h5>
+      </div>
+    </div>
+
+    <div class="col s12 center-align" style="margin-bottom: 50px;">
+      <%= render "shared/search", { path: new_pokemon_path } %>
+    </div>
+
+    <div class="row">
+      <div class="col s12 center-align pokemaintext">
+        <h3>Pokemons that all member cought</h3>
+      </div>
+    </div>
+    
+
+    <table>
+      <tr>
+        <th></th>
+        <th>No</th>
+        <th>Name</th>
+        <th>Trainer</th>
+        <th>Favorite</th>
+        <th>Detail</th>
+      </tr>
+      <% if @pokemons.present? %>
+      <% @pokemons.each do |pokemon| %>
+      <tr>
+        <td><%= image_tag(pokemon.image_url, size: "200") %></td>
+        <td><%= pokemon.order %></td>
+        <td><%= pokemon.name %></td>
+        <td><a href="/users/<%= pokemon.user.id %>">
+            Trainer: <%= pokemon.user.nickname %>
+          </a></td>
+        <td><% if user_signed_in? %>
+          <% if pokemon.favorited_by?(current_user) %>
+          <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+          <p><span>UnFavorite:
+            </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :delete %></p>
+          <% else %>
+          <p><span>Favorite:
+            </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :post %></p>
           <% end %>
-          <li><%= link_to 'Details', "/pokemons/#{pokemon.id}", {method: :get} %></li>
-        </ul>
-      </div>
-      <div>
-        <%= image_tag(pokemon.image_url, size: "200") %>
-      <% if user_signed_in? %>
-        <% if pokemon.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-            <p><span>UnFavorite: </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :delete %></p>
-        <% else %>
-            <p><span>Favorite: </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :post %></p>
-        <% end %>
-      <% else %>
-        <p><span>Number of favorites: </span><%= pokemon.favorites.count %></p>
+          <% else %>
+          <p><span>Number of favorites: </span><%= pokemon.favorites.count %></p>
+          <% end %></td>
+          <td><%= link_to 'Details', "/pokemons/#{pokemon.id}", {method: :get} %></td>
+      </tr>
       <% end %>
-      </div>
-      
+      <% end %>
+    </table>
 
-    <% end %>
-  <% end %>
+  </div>
 </div>

@@ -12,7 +12,7 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Poke-App</a>
+        <a href="root_path" class="brand-logo">Poke-App</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if user_signed_in? %>
             <li><a href="#"><%= link_to "Mypage", "/users/#{current_user.id}" %></a></li>
@@ -27,10 +27,8 @@
       </div>
     </nav>
 
-    <% if flash[:notice] %>
-      <div><%= flash[:notice] %></div>
-    <% end %>
-
-    <%= yield %>
+      <%= yield %>
+    </div>
+    
   </body>
 </html>
