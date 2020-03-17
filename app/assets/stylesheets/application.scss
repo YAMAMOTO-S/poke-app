@@ -15,6 +15,9 @@
  *= require_self
  */
 @import 'materialize';
+.footer {
+  margin-top: 200px;
+}
 .nav-wrapper {
   background-color: #FB9D7E;
 }
@@ -55,10 +58,28 @@
 }
 table {
   margin-top: 50px;
+
   td {
     color: #AE9890;
   }
   th{
     color: #F8CD9E;
   }
+}
+
+// .poketeble{
+//   height: 700px;
+//   overflow: scroll;
+// }
+
+.newmaintext h3{
+  color: #FB9D7E;
+}
+.card {
+  background-color: #AE9890;
+  width: 70%;
+  margin: 0 auto;
+}
+.pokedes {
+  width: 50%;
 }

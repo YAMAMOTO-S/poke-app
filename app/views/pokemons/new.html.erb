@@ -1,36 +1,53 @@
-<h1>Caught a new Pokemon!!</h1>
-<%= render "shared/search", { path: new_pokemon_path } %>
-<div>
-  <% if @pokemon.present? %>
-    <table>
-      <tr>
-        <td>No.</td>
-        <td><%= @pokemon.order %></td>
-      </tr>
-      <tr>
-        <td>Name:</td>
-        <td><%= @pokemon.name %></td>
-      </tr>
-      <tr>
-        <td>Type:</td>
-        <td><%= @pokemon.type1 %></<td>
-      </tr>
-    </table>
-    <div style="width: 300px; height: 100px; ">
-      <%= @pokemon.description %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 newmaintext">
+      <h3 class="center-align">catch pokemons</h3>
     </div>
-    <%= image_tag(@pokemon.image_url, size: "200") %>
+  </div>
 
-    <%= form_with model: @pokemon, local: true do |f| %>
-      <%= f.hidden_field :order %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :image_url %>
-      <%= f.hidden_field :type1 %>
-      <%= f.hidden_field :description %>
-      <%= f.submit 'GET!!', name: nil %>
-    <% end %>
+  <div class="card">
+    <div class="card-content white-text">
+      <span class="card-title center-align">Directions for use</span>
+      <p class="center-align">Enter any number from 0 to 800 ;)</p>
+      <p class="center-align">If the pokemon that you encounted is your favorite one, let's get it !!</p>
+    </div>
+  </div>  
 
-  <% else %>
-    <p>Enter any number from 0 to 800 ;)</p>
-  <% end %>
+  <div class="search center-align">
+    <%= render "shared/search", { path: new_pokemon_path } %>
+  </div>
+
+  <div class="poketeble">
+      <table>
+        <tr>
+          <th></th>
+          <th>No</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+        <% if @pokemon.present? %>
+        <tr>
+          <td><%= image_tag(@pokemon.image_url, size: "200") %></td>
+          <td><%= @pokemon.order %></td>
+          <td><%= @pokemon.name %></td>
+          <td class="pokedes"><%= @pokemon.description %></td>
+        </tr>
+        <% end %>
+      </table>
+
+      <div class="center-align searchbtn">
+        <% if @pokemon.present? %>
+          <%= form_with model: @pokemon, local: true do |f| %>
+            <%= f.hidden_field :order %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :image_url %>
+            <%= f.hidden_field :type1 %>
+            <%= f.hidden_field :description %>
+            <a class="waves-effect waves-light btn-large" style="margin-top: 30px"><%= f.submit 'GET!!', name: nil %></a>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="footer"></div>
+  </div>
 </div>
