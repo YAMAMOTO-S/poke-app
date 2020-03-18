@@ -1,11 +1,48 @@
-<%= @nickname %>さんのマイページ
-  <% @pokemons.each do |pokemon| %>
-    <%= pokemon.name %>
-    <%= image_tag(pokemon.image_url, size: "200") %>
-  <% end %>
+<div class="container">
+  <div class="row">
 
-  <h1>pokemon that you favorited</h1>
-    <% @fav_pokemons.each do |pokemon| %>
-      <%= pokemon.name %>
-      <%= image_tag(pokemon.image_url, size: "200") %>
-    <% end %>
+<%# プロフィールカード %>
+    <div class="col s12 center-align">
+      <h2 class="header profile_header"><%= @nickname %>'s' profile</h2>
+      <div class="card horizontal card2">
+        <div class="card-image">
+          <%= image_tag @userimage, size: "200"%>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content userinfo">
+            <p><%= @nickname %></p>
+            <p><%= @userinfo %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<%# 所持ポケモン一覧 %>
+    <div class="col s12 havepokemons">
+      <h5><%= @nickname %>'s pokemon</h5>
+      <div class="col s12 havepokemon card card3">
+      <% @pokemons.each do |pokemon|  %>
+        <div class="card-content">
+          <%= link_to "/pokemons/#{pokemon.id}"  do %>
+            <%= image_tag(pokemon.image_url, size: "200") %>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+<%# お気に入り一覧 %>
+      <div class="col s12 havepokemons">
+        <h5>favorite's pokemon</h5>
+        <div class="col s12 havepokemon card card3">
+        <% @fav_pokemons.each do |pokemon|  %>
+          <div class="card-content">
+            <%= link_to "/pokemons/#{pokemon.id}"  do %>
+              <%= image_tag(pokemon.image_url, size: "200") %>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>
