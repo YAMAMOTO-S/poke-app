@@ -144,10 +144,18 @@ table {
   display: flex;
 }
 
-
+.comment_card {
+  background-color: white;
+}
 .comment_name {
   display: flex;
+  color: #AE9890;
 }
 .comment_text {
   margin-top: -20px;
+  color: #AE9890;
+}
+.comment-area {
+  width: 50%;
+    margin: 0 auto;
 }

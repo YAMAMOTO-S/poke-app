@@ -59,27 +59,39 @@
     <% end %>
   </div>
 
+
+
+    <div class="comment-area">
+    <div class="col s6">
+      <div class=" input-field comment_form center-align">
+        <% if current_user %>
+          <%= form_with(model: [@pokemon, @comment], local: true) do |form| %>
+            <%= form.text_area :text, placeholder: "Comment", class: "materialize-textarea"%>
+            <a class="waves-effect waves-light btn-large" style="margin-top: 30px"><i class="material-icons left">search</i><%= form.submit 'send'%></a>
+          <% end %>
+        <% else %>
+          <p>ログインが必要です</p>
+        <% end %>
+      </div>
+    </div>
+    </div>
+    
   <div class="row">
     <div class="col s12">
-
-      <% if current_user %>
-        <%= form_with(model: [@pokemon, @comment], local: true) do |form| %>
-          <%= form.text_area :text, placeholder: "Comment" %>
-          <%= form.submit "Send" %>
-        <% end %>
-      <% else %>
-        <p>ログインが必要です</p>
-      <% end %>
-
-      <div class="card">
+      <% if @comments %>
+      <% @comments.each do |comment| %>
+      <div class="card comment_card">
         <div class="card-content comment_name">
-          <%= image_tag current_user.image.url, size: "50"%>
-          <p style="margin-top: 18px; margin-left: 10px;"><%= current_user.nickname%></p>
+          <%= image_tag comment.user.image.url, size: "50"%>
+          <p style="margin-top: 18px; margin-left: 10px;"><%= comment.user.nickname%></p>
         </div>
         <div class="card-content comment_text">
-          コメント
+          <%= comment.text %>
         </div>
       </div>
+      <% end %>
+      <% end %>
+
     </div>
   </div>
 
