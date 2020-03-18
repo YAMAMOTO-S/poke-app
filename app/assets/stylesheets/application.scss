@@ -87,6 +87,7 @@ table {
 .desc {
   width: 70%;
   margin: 50px auto;
+  margin-bottom: 100px;
 }
 .brand-logo{
   margin-left: 20px;
@@ -156,6 +157,11 @@ table {
   color: #AE9890;
 }
 .comment-area {
-  width: 50%;
-    margin: 0 auto;
+  width: 70%;
+  margin-left: 350px;
+}
+.comment-btn {
+  input {
+    color: white;
+  }
 }

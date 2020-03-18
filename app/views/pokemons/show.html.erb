@@ -59,22 +59,30 @@
     <% end %>
   </div>
 
-
-
-    <div class="comment-area">
-    <div class="col s6">
+<div class="comment-area">
+    <div class="col s8">
       <div class=" input-field comment_form center-align">
         <% if current_user %>
-          <%= form_with(model: [@pokemon, @comment], local: true) do |form| %>
-            <%= form.text_area :text, placeholder: "Comment", class: "materialize-textarea"%>
-            <a class="waves-effect waves-light btn-large" style="margin-top: 30px"><i class="material-icons left">search</i><%= form.submit 'send'%></a>
+          <div class="row">
+            <%= form_with(model: [@pokemon, @comment], local: true) do |form| %>
+              <div class="col s6">
+              <%= form.text_area :text, placeholder: "Comment", class: "materialize-textarea"%>
+              </div>
+              <div class="col s2">
+              <a class="waves-effect waves-light btn-small comment-btn" 
+                style="margin-left: -50px; background-color: #F8CD9E;"><%= form.submit 'send'%></a>
+              </div>
+            <% end %>
+            </div>
+          <% else %>
+            <p>ログインが必要です</p>
+          </div>
           <% end %>
-        <% else %>
-          <p>ログインが必要です</p>
-        <% end %>
       </div>
     </div>
-    </div>
+</div>
+
+
     
   <div class="row">
     <div class="col s12">
