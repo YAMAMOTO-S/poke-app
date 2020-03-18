@@ -12,13 +12,15 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="root_path" class="brand-logo">Poke-App</a>
+        <a href="#" class="brand-logo">Poke-App</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if user_signed_in? %>
+            <li><a href="#"><%= link_to "HOME", root_path %></a></li>
             <li><a href="#"><%= link_to "Mypage", "/users/#{current_user.id}" %></a></li>
             <li><a href="#"><%= link_to  "NEW", "/pokemons/new", class: "post" %></a></li>
             <li><a href="#"><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></a></li>
           <% else %>
+            <li><a href="#"><%= link_to "HOME", root_path %></a></li>
             <li><a href="#"><%= link_to "Login", new_user_session_path, class: 'post' %></a></li>
             <li><a href="#"><%= link_to "SignUp", new_user_registration_path, class: 'post' %></a></li>
             <li><a href="#"><%= link_to 'HOME', pokemons_path %></a></li>
