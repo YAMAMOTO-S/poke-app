@@ -15,6 +15,7 @@
         <a href="#" class="brand-logo">Poke-App</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if user_signed_in? %>
+            <li>Name: <%= current_user.nickname %></li>
             <li><a href="#"><%= link_to "HOME", root_path %></a></li>
             <li><a href="#"><%= link_to "Mypage", "/users/#{current_user.id}" %></a></li>
             <li><a href="#"><%= link_to  "NEW", "/pokemons/new", class: "post" %></a></li>
