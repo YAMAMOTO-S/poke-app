@@ -50,16 +50,26 @@
           <td><%= pokemon.order %></td>
           <td><%= pokemon.name %></td>
           <td><a href="/users/<%= pokemon.user.id %>">
-              Trainer: <%= pokemon.user.nickname %>
+              <%= pokemon.user.nickname %>
             </a></td>
-          <td><% if user_signed_in? %>
+          <td class="center-align"><% if user_signed_in? %>
             <% if pokemon.favorited_by?(current_user) %>
             <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-            <p><span>UnFavorite:
-              </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :delete %></p>
+            <div class="fav-icons">
+              <%= link_to pokemon_favorites_path(pokemon.id), method: :delete  do %>
+                <i class="samll material-icons">mood</i>
+              <% end %>
+                <p><%= pokemon.favorites.count %></p>
+            </div>
+
             <% else %>
-            <p><span>Favorite:
-              </span><%=link_to pokemon.favorites.count, pokemon_favorites_path(pokemon.id), method: :post %></p>
+
+            <div class="fav-icons">
+            <%=link_to pokemon_favorites_path(pokemon.id), method: :post  do %>
+              <i class="samll material-icons">mood</i>
+            <% end %>
+              <p><%= pokemon.favorites.count %></p>
+            </div>
             <% end %>
             <% else %>
             <p><span>Number of favorites: </span><%= pokemon.favorites.count %></p>
