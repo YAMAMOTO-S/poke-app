@@ -109,3 +109,37 @@ table {
     border: none;
   }
 }
+
+.card2 {
+  background-color: white;
+}
+.card3 {
+  background-color: white;
+  overflow: scroll;
+}
+.userinfo {
+  color: #AE9890;
+  margin: 0 auto;
+  p {
+    font-size: 20px;
+    border-bottom: 1px solid #F8CD9E;
+    padding-top: 50px;
+  }
+}
+.profile_header {
+  color: #FB9D7E;
+  margin-bottom: 70px;
+  margin-top: 70px;
+}
+.card-image {
+  padding: 40px;
+}
+.havepokemons{
+  margin-top: 50px;
+  h5{
+    color: #FB9D7E;
+  }
+}
+.havepokemon {
+  display: flex;
+}
