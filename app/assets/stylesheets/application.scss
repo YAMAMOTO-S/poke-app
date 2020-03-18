@@ -1,0 +1,92 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require material_icons
+ *= require_self
+ */
+@import 'materialize';
+.footer {
+  margin-top: 200px;
+}
+.nav-wrapper {
+  background-color: #FB9D7E;
+}
+.mainimages {
+  position: relative;
+}
+.mainimages h1 {
+  position: absolute;
+  color: white;
+  top: 30%;
+  left: 42%;
+}
+.maintext h2{
+  color: #FB9D7E;
+}
+.icons i {
+  color: #F8CD9E;
+  margin-top: 50px;
+}
+.icons h5 {
+  color: #AE9890;
+}
+.searchbtn a{
+  background-color: #F8CD9E;
+}
+.searchbtn input {
+  color: #AE9890;
+}
+.searchbtn p {
+  color: #AE9890;
+}
+.pokemons {
+  overflow: scroll;
+  display: flex;
+}
+.pokemaintext h3{
+  color: #FB9D7E;
+}
+table {
+  margin-top: 50px;
+
+  td {
+    color: #AE9890;
+  }
+  th{
+    color: #F8CD9E;
+  }
+}
+
+// .poketeble{
+//   height: 700px;
+//   overflow: scroll;
+// }
+
+.newmaintext h3{
+  color: #FB9D7E;
+}
+.card {
+  background-color: #AE9890;
+  width: 70%;
+  margin: 0 auto;
+}
+.pokedes {
+  width: 50%;
+}
+.desc {
+  width: 70%;
+  margin: 50px auto;
+}
+.brand-logo{
+  margin-left: 20px;
+}

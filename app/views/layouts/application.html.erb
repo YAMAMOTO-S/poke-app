@@ -10,31 +10,27 @@
   </head>
 
   <body>
-    <header>
-      <div>
-        <% if user_signed_in? %>
-          <div class="user_nav grid-6">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-            <%= link_to  "Caught Pokemon", "/pokemons/new", class: "post" %>
-            <%= link_to 'HOME', root_path %>
-            Name: <b><%= current_user.nickname %></b>
-            <%= link_to "Mypage", "/users/#{current_user.id}" %>
-          </div>
-        <% else %>
-          <div class="grid-6">
-            <%= link_to "Login", new_user_session_path, class: 'post' %>
-            <%= link_to "SignUp", new_user_registration_path, class: 'post' %>
-            <%= link_to 'HOME', pokemons_path %>
-          </div>
-        <% end %>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Poke-App</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+            <li><a href="#"><%= link_to "HOME", root_path %></a></li>
+            <li><a href="#"><%= link_to "Mypage", "/users/#{current_user.id}" %></a></li>
+            <li><a href="#"><%= link_to  "NEW", "/pokemons/new", class: "post" %></a></li>
+            <li><a href="#"><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></a></li>
+          <% else %>
+            <li><a href="#"><%= link_to "HOME", root_path %></a></li>
+            <li><a href="#"><%= link_to "Login", new_user_session_path, class: 'post' %></a></li>
+            <li><a href="#"><%= link_to "SignUp", new_user_registration_path, class: 'post' %></a></li>
+            <li><a href="#"><%= link_to 'HOME', pokemons_path %></a></li>
+          <% end %>
+        </ul>
       </div>
-    </header>
+    </nav>
 
-
-    <% if flash[:notice] %>
-      <div><%= flash[:notice] %></div>
-    <% end %>
-
-    <%= yield %>
+      <%= yield %>
+    </div>
+    
   </body>
 </html>

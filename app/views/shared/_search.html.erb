@@ -1,17 +1,10 @@
-<%= link_to 'new', new_pokemon_path %>
-<%= link_to 'index', pokemons_path %>
-
-<div style="margin: 50px;">
+<div style="margin: 50px;" class="searchbtn">
   <%= form_with url: path, method: :get, local: true do |form| %>
     <%= form.text_field :search %>
-    <%= form.submit 'search', name: nil %>
+    <a class="waves-effect waves-light btn-large" style="margin-top: 30px"><i class="material-icons left">search</i><%= form.submit 'search', name: nil %></a>
+    <p>Enter any number from 0 to 800 ;)</p>
+    <p> If the pokemon that you encounted is your favorite one, let's get it !!</p>
   <% end %>
 </div>
 <div>
-  <p>Enter any number from 0 to 800 ;)</p>
-  <p> If the pokemon that you encounted is your favorite one, let's get it !!</p>
-</div>
-
-<div>
-----------------------------------------------------
 </div>
