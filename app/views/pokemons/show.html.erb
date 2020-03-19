@@ -95,13 +95,17 @@
           </div>
           <div class="card-content comment_text">
             <%= comment.text %>
-            <p><%=link_to "削除", "/pokemons/#{@pokemon.id}/comments/#{comment.id}", method: :delete %></p>
+            <%=link_to "/pokemons/#{@pokemon.id}/comments/#{comment.id}", method: :delete do %>
+              <i class="samll material-icons">delete</i>
+            <% end %>
           </div>
         </div>
         <% end %>
       <% end %>
-
     </div>
+  </div>
+
+  <div class="footer">
   </div>
 
 </div>
