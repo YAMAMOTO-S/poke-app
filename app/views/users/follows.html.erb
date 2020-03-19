@@ -10,7 +10,9 @@
             <div class="card f-card">
                 <div class="card-content f-content">
                     <%= image_tag user.image.url, size: "70"%>
-                    <p><%= user.nickname %></p>
+                    <a href="/users/<%= user.id %>" style="border: none;">
+                        <p><%= user.nickname %></p>
+                    </a>
                 </div>
             </div>
         </div>
