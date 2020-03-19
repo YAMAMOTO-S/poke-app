@@ -8,6 +8,9 @@
           <th>Type</th>
           <th>Trainer</th>
           <th>Favorite</th>
+          <% if current_user.id == @pokemon.user.id %>
+          <th>Rlease</th>
+          <% end %>
         </tr>
         <% if @pokemon.present? %>
         <tr>
@@ -24,7 +27,7 @@
             <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
             <div class="fav-icons">
               <%= link_to pokemon_favorites_path(@pokemon.id), method: :delete  do %>
-                <i class="samll material-icons">mood</i>
+                <i class="samll material-icons">thumb_up</i>
               <% end %>
                 <p><%= @pokemon.favorites.count %></p>
             </div>
@@ -33,7 +36,7 @@
 
             <div class="not-fav">
             <%=link_to pokemon_favorites_path(@pokemon.id), method: :post  do %>
-              <i class="samll material-icons">mood</i>
+              <i class="samll material-icons">thumb_up</i>
             <% end %>
               <p><%= @pokemon.favorites.count %></p>
             </div>
@@ -41,12 +44,23 @@
             <% else %>
             <p><span>Number of favorites: </span><%= pokemon.favorites.count %></p>
             <% end %></td>
+
+<%# 削除ボタン %>
+            <div class="release-btn">
+              <% if current_user.id == @pokemon.user.id %>
+                <td><%= link_to "/pokemons/#{@pokemon.id}", method: :delete do %>
+                  <i class="samll material-icons">mood_bad</i>
+                <% end %>
+              <% end %>
+              </td>
+            </div>
             
         </tr>
         <% end %>
       </table>
   </div>
 
+<%# ポケモンテキスト %>
   <div class="desc">
     <% if @pokemon.present? %>
     <div class="card">
@@ -57,4 +71,54 @@
     </div>
     <% end %>
   </div>
+
+<div class="comment-area">
+    <div class="col s8">
+      <div class=" input-field comment_form center-align">
+        <% if current_user %>
+          <div class="row">
+            <%= form_with(model: [@pokemon, @comment], local: true) do |form| %>
+              <div class="col s6">
+              <%= form.text_area :text, placeholder: "Comment", class: "materialize-textarea"%>
+              </div>
+              <div class="col s2">
+              <a class="waves-effect waves-light btn-small comment-btn" 
+                style="margin-left: -50px; background-color: #F8CD9E;"><%= form.submit 'send'%></a>
+              </div>
+            <% end %>
+            </div>
+          <% else %>
+            <p>ログインが必要です</p>
+          </div>
+          <% end %>
+      </div>
+    </div>
+</div>
+
+
+    
+  <div class="row">
+    <div class="col s12">
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+        <div class="card comment_card">
+          <div class="card-content comment_name">
+            <%= image_tag comment.user.image.url, size: "50"%>
+            <p style="margin-top: 18px; margin-left: 10px;"><%= comment.user.nickname%></p>
+          </div>
+          <div class="card-content comment_text">
+            <%= comment.text %>
+            <%=link_to "/pokemons/#{@pokemon.id}/comments/#{comment.id}", method: :delete do %>
+              <i class="samll material-icons">delete</i>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="footer">
+  </div>
+
 </div>

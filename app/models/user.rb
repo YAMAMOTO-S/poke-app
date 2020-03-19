@@ -9,4 +9,6 @@ class User < ApplicationRecord
 
   has_many :favorite_pokemons, through: :favorites, source: :pokemon
   mount_uploader :image, ImageUploader
+
+  has_many :comments
 end

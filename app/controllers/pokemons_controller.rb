@@ -7,6 +7,8 @@ class PokemonsController < ApplicationController
 
   def show
     @pokemon = Pokemon.find(params[:id])
+    @comment = Comment.new
+    @comments = @pokemon.comments
   end
   
   
@@ -46,6 +48,7 @@ class PokemonsController < ApplicationController
   def destroy
     pokemon = Pokemon.find(params[:id])
     pokemon.destroy
+    redirect_to "/users/#{current_user.id}"
   end
   
 

@@ -87,6 +87,7 @@ table {
 .desc {
   width: 70%;
   margin: 50px auto;
+  margin-bottom: 100px;
 }
 .brand-logo{
   margin-left: 20px;
@@ -142,4 +143,27 @@ table {
 }
 .havepokemon {
   display: flex;
+}
+
+.comment_card {
+  background-color: white;
+}
+.comment_name {
+  display: flex;
+  color: #AE9890;
+}
+.comment_text {
+  margin-top: -20px;
+  color: #AE9890;
+  display: flex;
+  justify-content: space-between;
+}
+.comment-area {
+  width: 70%;
+  margin-left: 350px;
+}
+.comment-btn {
+  input {
+    color: white;
+  }
 }

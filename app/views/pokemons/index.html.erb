@@ -57,7 +57,7 @@
             <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
             <div class="fav-icons">
               <%= link_to pokemon_favorites_path(pokemon.id), method: :delete  do %>
-                <i class="samll material-icons">mood</i>
+                <i class="samll material-icons">thumb_up</i>
               <% end %>
                 <p><%= pokemon.favorites.count %></p>
             </div>
@@ -66,7 +66,7 @@
 
             <div class="not-fav">
             <%=link_to pokemon_favorites_path(pokemon.id), method: :post  do %>
-              <i class="samll material-icons">mood</i>
+              <i class="samll material-icons">thumb_up</i>
             <% end %>
               <p><%= pokemon.favorites.count %></p>
             </div>
