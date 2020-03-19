@@ -48,6 +48,7 @@ a {
 }
 .searchbtn a{
   background-color: #F8CD9E;
+  color: white;
 }
 .searchbtn input {
   color: #AE9890;
@@ -124,7 +125,7 @@ table {
   p {
     font-size: 20px;
     border-bottom: 1px solid #F8CD9E;
-    padding-top: 50px;
+    padding-top: 30px;
   }
 }
 .profile_header {
@@ -166,4 +167,11 @@ table {
   input {
     color: white;
   }
+}
+
+.followbtn{
+  background-color: #F8CD9E;
+  margin-top: 30px;
+  color: white;
+  width: 150px;
 }

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
+# フレンド
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
