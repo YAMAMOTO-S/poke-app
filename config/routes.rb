@@ -11,12 +11,7 @@ Rails.application.routes.draw do
 
 # ポケモンにコメント
   resources :pokemons do 
-    resources :comments, only: :create
-  end
-
-# ユーザーにコメント
-  resources :users do 
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :users, only: :show

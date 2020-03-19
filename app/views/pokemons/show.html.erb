@@ -87,17 +87,18 @@
   <div class="row">
     <div class="col s12">
       <% if @comments %>
-      <% @comments.each do |comment| %>
-      <div class="card comment_card">
-        <div class="card-content comment_name">
-          <%= image_tag comment.user.image.url, size: "50"%>
-          <p style="margin-top: 18px; margin-left: 10px;"><%= comment.user.nickname%></p>
+        <% @comments.each do |comment| %>
+        <div class="card comment_card">
+          <div class="card-content comment_name">
+            <%= image_tag comment.user.image.url, size: "50"%>
+            <p style="margin-top: 18px; margin-left: 10px;"><%= comment.user.nickname%></p>
+          </div>
+          <div class="card-content comment_text">
+            <%= comment.text %>
+            <p><%=link_to "削除", "/pokemons/#{@pokemon.id}/comments/#{comment.id}", method: :delete %></p>
+          </div>
         </div>
-        <div class="card-content comment_text">
-          <%= comment.text %>
-        </div>
-      </div>
-      <% end %>
+        <% end %>
       <% end %>
 
     </div>

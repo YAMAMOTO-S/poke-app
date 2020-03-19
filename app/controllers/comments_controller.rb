@@ -6,6 +6,12 @@ class CommentsController < ApplicationController
     
     redirect_back(fallback_location: '/pokemons/#{pokemon.id}')
   end
+
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_back(fallback_location: '/pokemons/#{pokemon.id}')
+  end
+  
   
 
   private
