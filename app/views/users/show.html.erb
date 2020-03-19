@@ -10,7 +10,10 @@
         <div class="card-stacked">
           <div class="card-content userinfo">
             <p><%= @nickname %></p>
-            <p><%= @userinfo %></p>
+            <div class="follow-count">
+              <p style="margin-right: 30px"><%= link_to "Follow:", follows_user_path(@follow_user.id) %> <b><%= @f_user.count %></b></p>
+              <p>Follower: <b><%= @ed_user.count %></b></p>
+            </div>
 
             <% if @user.followed_by?(current_user) %>
               <%=link_to user_relationships_path(@user.id), method: :delete do %>
@@ -30,6 +33,7 @@
           </div>
         </div>
       </div>
+
     </div>
 
 <%# 所持ポケモン一覧 %>
@@ -47,17 +51,20 @@
     </div>
 
 <%# お気に入り一覧 %>
-      <div class="col s12 havepokemons">
-        <h5>favorite's pokemon</h5>
-        <div class="col s12 havepokemon card card3">
-        <% @fav_pokemons.each do |pokemon|  %>
-          <div class="card-content">
-            <%= link_to "/pokemons/#{pokemon.id}"  do %>
-              <%= image_tag(pokemon.image_url, size: "200") %>
-            <% end %>
-          </div>
-        <% end %>
+    <div class="col s12 havepokemons">
+      <h5>favorite's pokemon</h5>
+      <div class="col s12 havepokemon card card3">
+      <% @fav_pokemons.each do |pokemon|  %>
+        <div class="card-content">
+          <%= link_to "/pokemons/#{pokemon.id}"  do %>
+            <%= image_tag(pokemon.image_url, size: "200") %>
+          <% end %>
         </div>
+      <% end %>
+      </div>
     </div>
+
+  </div>
+  <div class="footer">
   </div>
 </div>

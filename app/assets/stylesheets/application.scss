@@ -175,3 +175,23 @@ table {
   color: white;
   width: 150px;
 }
+.follow-count {
+  display: flex;
+    p {
+    margin: 10px;
+  }
+}
+.f-card {
+  margin-top: 80px;
+  background-color: white;
+}
+.f-content {
+  display: flex;
+  p {
+    padding-top: 20px;
+    padding-left: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #AE9890;
+  }
+}

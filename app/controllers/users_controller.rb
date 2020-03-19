@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     @userinfo = @user.created_at
     @pokemons = @user.pokemons
     @fav_pokemons = @user.favorite_pokemons
+
+    @follow_user= User.find(params[:id])
+    @f_user = @follow_user.followings
+    @ed_user = @follow_user.followers
   end
 
   def follows
@@ -17,7 +21,5 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.followers
   end
-  
-  
   
 end
