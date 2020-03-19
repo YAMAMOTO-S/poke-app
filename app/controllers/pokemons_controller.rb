@@ -2,7 +2,11 @@ class PokemonsController < ApplicationController
   before_action :move_to_index, except: [:index]
 
   def index
-    @pokemons = Pokemon.includes(:user)
+    # fav_count = Pokemon.joins(:favorites).group(:pokemon_id).count
+    # fav_ids = Hash[fav_count.sort_by{ | k, v | v}].keys
+    # @pokemons = Pokemon.where(id: fav_ids).includes(:user)
+    @pokemons = Pokemon.all.order(id: "DESC").includes(:user)
+
   end
 
   def show
@@ -11,8 +15,6 @@ class PokemonsController < ApplicationController
     @comments = @pokemon.comments
   end
   
-  
-
   def new
     return if params[:search].blank?
     raw_response = Faraday.get "https://pokeapi.co/api/v2/pokemon/#{params[:search]}"
