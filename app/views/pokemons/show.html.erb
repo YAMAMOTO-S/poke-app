@@ -8,6 +8,9 @@
           <th>Type</th>
           <th>Trainer</th>
           <th>Favorite</th>
+          <% if current_user.id == @pokemon.user.id %>
+          <th>Rlease</th>
+          <% end %>
         </tr>
         <% if @pokemon.present? %>
         <tr>
@@ -24,7 +27,7 @@
             <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
             <div class="fav-icons">
               <%= link_to pokemon_favorites_path(@pokemon.id), method: :delete  do %>
-                <i class="samll material-icons">mood</i>
+                <i class="samll material-icons">thumb_up</i>
               <% end %>
                 <p><%= @pokemon.favorites.count %></p>
             </div>
@@ -33,7 +36,7 @@
 
             <div class="not-fav">
             <%=link_to pokemon_favorites_path(@pokemon.id), method: :post  do %>
-              <i class="samll material-icons">mood</i>
+              <i class="samll material-icons">thumb_up</i>
             <% end %>
               <p><%= @pokemon.favorites.count %></p>
             </div>
@@ -41,6 +44,16 @@
             <% else %>
             <p><span>Number of favorites: </span><%= pokemon.favorites.count %></p>
             <% end %></td>
+
+<%# 削除ボタン %>
+            <div class="release-btn">
+              <% if current_user.id == @pokemon.user.id %>
+                <td><%= link_to "/pokemons/#{@pokemon.id}", method: :delete do %>
+                  <i class="samll material-icons">mood_bad</i>
+                <% end %>
+              <% end %>
+              </td>
+            </div>
             
         </tr>
         <% end %>

@@ -48,6 +48,7 @@ class PokemonsController < ApplicationController
   def destroy
     pokemon = Pokemon.find(params[:id])
     pokemon.destroy
+    redirect_to "/users/#{current_user.id}"
   end
   
 
