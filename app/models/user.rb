@@ -25,6 +25,7 @@ class User < ApplicationRecord
   end
   
 
-  # Good
+  # Good and Bad
   has_many :goods
+  has_many :bads
 end

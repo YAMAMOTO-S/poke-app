@@ -116,6 +116,7 @@
             <% end %>
           </div>
           <p><span>good: </span><%=link_to "#", comment_goods_path(comment.id), method: :post %></p>
+          <p><span>bad: </span><%=link_to "#", comment_bads_path(comment.id), method: :post %></p>
         </div>
         <% end %>
       <% end %>
