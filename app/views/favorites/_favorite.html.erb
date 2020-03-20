@@ -1,20 +1,20 @@
 <% if user_signed_in? %>
-            <% if @pokemon.favorited_by?(current_user) %>
+            <% if pokemon.favorited_by?(current_user) %>
             <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
             <div class="fav-icons">
-              <%= link_to pokemon_favorites_path(@pokemon.id), method: :delete, remote: true  do %>
+              <%= link_to pokemon_favorites_path(pokemon.id), method: :delete, remote: true  do %>
                 <i class="samll material-icons">thumb_up</i>
               <% end %>
-                <p><%= @pokemon.favorites.count %></p>
+                <p><%= pokemon.favorites.count %></p>
             </div>
 
             <% else %>
 
             <div class="not-fav">
-            <%=link_to pokemon_favorites_path(@pokemon.id), method: :post, remote: true  do %>
+            <%=link_to pokemon_favorites_path(pokemon.id), method: :post, remote: true  do %>
               <i class="samll material-icons">thumb_up</i>
             <% end %>
-              <p><%= @pokemon.favorites.count %></p>
+              <p><%= pokemon.favorites.count %></p>
             </div>
             <% end %>
             <% else %>
