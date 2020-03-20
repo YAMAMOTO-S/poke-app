@@ -72,6 +72,7 @@
     <% end %>
   </div>
 
+<%# コメントフォーム %>
 <div class="comment-area">
     <div class="col s8">
       <div class=" input-field comment_form center-align">
@@ -82,7 +83,7 @@
               <%= form.text_area :text, placeholder: "Comment", class: "materialize-textarea"%>
               </div>
               <div class="col s2">
-              <a class="waves-effect waves-light btn-small comment-btn" 
+              <a class="waves-effect waves-light btn-small btn-flat comment-btn" 
                 style="margin-left: -50px; background-color: #F8CD9E;"><%= form.submit 'send'%></a>
               </div>
             <% end %>
@@ -96,7 +97,7 @@
 </div>
 
 
-    
+<%# コメント %>
   <div class="row">
     <div class="col s12">
       <% if @comments %>
@@ -104,7 +105,9 @@
         <div class="card comment_card">
           <div class="card-content comment_name">
             <%= image_tag comment.user.image.url, size: "50"%>
-            <p style="margin-top: 18px; margin-left: 10px;"><%= comment.user.nickname%></p>
+            <a href="/users/<%= comment.user.id %>" style="border: none; margin-top: 18px; margin-left: 10px;">
+                <p><%= comment.user.nickname %></p>
+            </a>
           </div>
           <div class="card-content comment_text">
             <%= comment.text %>
@@ -117,7 +120,7 @@
       <% end %>
     </div>
   </div>
-
+  
   <div class="footer">
   </div>
 
