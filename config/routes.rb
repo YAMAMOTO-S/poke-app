@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'goods/create'
+  get 'goods/destroy'
   devise_for :users
   root to: 'pokemons#index'
   resources :users, only: :show
