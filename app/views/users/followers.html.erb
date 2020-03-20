@@ -1,0 +1,20 @@
+
+<div class="container">
+
+    <div class="center-align" style="color: #F8CD9E;">
+        <h3>Follower</h3>
+    </div>
+
+    <% @users.each do |user| %>
+        <div class="col s4">
+            <div class="card f-card">
+                <div class="card-content f-content">
+                    <%= image_tag user.image.url, size: "70"%>
+                    <a href="/users/<%= user.id %>" style="border: none;">
+                        <p><%= user.nickname %></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -177,6 +177,9 @@ table {
 }
 .follow-count {
   display: flex;
+  a {
+    border: none;
+  }
     p {
     margin: 10px;
   }

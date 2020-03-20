@@ -72,6 +72,7 @@
     <% end %>
   </div>
 
+<%# コメントフォーム %>
 <div class="comment-area">
     <div class="col s8">
       <div class=" input-field comment_form center-align">
@@ -96,7 +97,7 @@
 </div>
 
 
-    
+<%# コメント %>
   <div class="row">
     <div class="col s12">
       <% if @comments %>
@@ -104,7 +105,9 @@
         <div class="card comment_card">
           <div class="card-content comment_name">
             <%= image_tag comment.user.image.url, size: "50"%>
-            <p style="margin-top: 18px; margin-left: 10px;"><%= comment.user.nickname%></p>
+            <a href="/users/<%= comment.user.id %>" style="border: none; margin-top: 18px; margin-left: 10px;">
+                <p><%= comment.user.nickname %></p>
+            </a>
           </div>
           <div class="card-content comment_text">
             <%= comment.text %>

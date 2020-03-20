@@ -10,9 +10,9 @@
         <div class="card-stacked">
           <div class="card-content userinfo">
             <p><%= @nickname %></p>
-            <div class="follow-count">
-              <p style="margin-right: 30px"><%= link_to "Follow:", follows_user_path(@follow_user.id) %> <b><%= @f_user.count %></b></p>
-              <p>Follower: <b><%= @ed_user.count %></b></p>
+            <div class="follow-count" class="follow">
+              <p style="margin-right: 30px;"><%= link_to "Follow:", follows_user_path(@follow_user.id) %> <b><%= @f_user.count %></b></p>
+              <p><%= link_to "Follower:", followers_user_path(@follow_user.id) %> <b><%= @ed_user.count %></b></p>
             </div>
 
             <% if @user.followed_by?(current_user) %>
