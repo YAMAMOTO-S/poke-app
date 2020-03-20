@@ -106,7 +106,7 @@
           <div class="card-content comment_name">
             <%= image_tag comment.user.image.url, size: "50"%>
             <a href="/users/<%= comment.user.id %>" style="border: none; margin-top: 18px; margin-left: 10px;">
-                <p><%= comment.user.nickname %></p>
+              <p><%= comment.user.nickname %></p>
             </a>
           </div>
           <div class="card-content comment_text">
@@ -115,6 +115,7 @@
               <i class="samll material-icons">delete</i>
             <% end %>
           </div>
+          <p><span>good: </span><%=link_to "#", comment_goods_path(comment.id), method: :post %></p>
         </div>
         <% end %>
       <% end %>
