@@ -92,10 +92,11 @@
             </a>
 
             <div class="good-bad">
-              <%= link_to comment_goods_path(comment.id), method: :post  do %>
-                <i class="samll material-icons">thumb_up</i>
-              <% end %>
-              <p style="margin-left: 5px;"><%= comment.goods.count %></p>
+<%# good %>    
+              <div id="like-link-<%= comment.id%>">
+                <%= render partial: 'goods/goodicon', locals: {comment: comment} %>
+              </div>
+              
 
               <%= link_to comment_bads_path(comment.id), method: :post do %>
                   <i class="samll material-icons" style="margin-left: 10px;">thumb_down</i>

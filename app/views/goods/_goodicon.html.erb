@@ -1,0 +1,5 @@
+
+  <%= link_to comment_goods_path(comment.id), method: :post, remote: true  do %>
+    <i class="samll material-icons">thumb_up</i>
+  <% end %>
+  <p style="margin-left: 5px;"><%= comment.goods.count %></p>
