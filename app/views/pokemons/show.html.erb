@@ -104,10 +104,15 @@
           
 
           <div class="card-content comment_text">
-            <%= comment.text %>
+            <div class="comment-text">
+              <p><%= comment.text %></p>
+              
+            </div>
+            <div class="deleteicon">
             <%=link_to "/pokemons/#{@pokemon.id}/comments/#{comment.id}", method: :delete do %>
               <i class="samll material-icons">delete</i>
             <% end %>
+            </div>
           </div>
         </div>
         <% end %>
