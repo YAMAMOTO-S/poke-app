@@ -92,13 +92,10 @@
             </a>
 
             <div class="good-bad">
-<%# good %>    
-              <div id="like-link-<%= comment.id%>">
+              <div id="like-link-<%= comment.id%>" style="display: flex">
                 <%= render partial: 'goods/goodicon', locals: {comment: comment} %>
-              </div>
-              
-<%# bad %>     
-              <div id="bad-link-<%= comment.id%>">
+              </div>     
+              <div id="bad-link-<%= comment.id%>" style="display: flex">
                 <%= render partial: 'bads/badicon', locals: {comment: comment} %>
               </div>
             </div>
