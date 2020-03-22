@@ -1,0 +1,4 @@
+<%= link_to comment_bads_path(comment.id), method: :post, remote: true do %>
+    <i class="samll material-icons" style="margin-left: 10px;">thumb_down</i>
+<% end %>
+<p style="margin-left: 5px;"><%= comment.bads.count %></p>
