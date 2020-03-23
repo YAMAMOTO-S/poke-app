@@ -210,10 +210,16 @@ table {
 
 .comment-text p {
   max-width: 80%;
+  padding-left: 80px;
 }
 .deleteicon {
 
   a {
     border: none;
   }
+}
+
+.edit-title {
+  color: #FB9D7E;
+  justify-content: center;
 }
