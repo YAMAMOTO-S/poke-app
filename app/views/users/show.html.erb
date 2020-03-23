@@ -32,7 +32,8 @@
             <% end %>
 
             <% if current_user.id == @user.id %>
-              <%= link_to 'Edit your info', edit_user_path(current_user) %>
+            <br><br>
+              <%= link_to 'Edit user info', edit_user_path(current_user) %>
             <% end %>
           </div>
         </div>
