@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'bads/create'
-  get 'bads/destroy'
   devise_for :users
   root to: 'pokemons#index'
-  resources :users, only: :show
+  resources :users, only: [:show, :edit, :update]
 
 # お気に入り
   resources :pokemons do
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
   resources :comments do
     resources :goods, only: [:create, :destroy]
   end
+
   # Bad
   resources :comments do
     resources :bads, only: [:create, :destroy]

@@ -1,0 +1,25 @@
+
+
+<div class="container" style="width: 40%; margin-top: 100px;">
+  <div class="edit-title">
+    <h5>Edit your info</h5>
+  </div>
+
+<%= form_with model: current_user, class: :form, local: true do |form| %>
+  <div class="input-field col s6">
+    <%= form.text_field :nickname, class: :form__title %>
+  </div>
+  <div class="input-field col s6">
+    <%= form.text_field :email, class: :form__text %>
+  </div>
+
+  <div style="display: flex;">
+    <%= form.file_field :image %>
+    <%= image_tag(current_user.image.url, size: "100") %>
+  </div>
+  <br>
+  <button class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #FB9D7E; color: white;"><%= form.submit 'Update', class: :form__btn %>
+    <i class="material-icons right">send</i>
+  </button>
+<% end %>
+</div>

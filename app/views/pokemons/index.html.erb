@@ -14,12 +14,12 @@
         <h5>search your Pokemons</h5>
       </div>
       <div class="col s4">
-        <i class="large material-icons">library_add</i>
+        <i class="large material-icons">add_box</i>
         <h5>add pokemons</h5>
       </div>
       <div class="col s4">
         <i class="large material-icons">mood</i>
-        <h5>collect and share it </h5>
+        <h5>collect and share your memories </h5>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
         <% if @pokemons.present? %>
         <% @pokemons.each do |pokemon| %>
         <tr>
-          <td><%= image_tag(pokemon.image_url, size: "200") %></td>
+          <td><%= image_tag(pokemon.image_url, size: "150") %></td>
           <td><%= pokemon.order %></td>
           <td><%= pokemon.name %></td>
           <td><a href="/users/<%= pokemon.user.id %>">

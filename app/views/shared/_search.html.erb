@@ -1,4 +1,4 @@
-<div style="margin: 50px;" class="searchbtn">
+<div style="margin: 0 auto; width: 50%; margin-top: 50px;" class="searchbtn">
   <%= form_with url: path, method: :get, local: true do |form| %>
     <%= form.text_field :search %>
     <a class="waves-effect waves-light btn-large btn-flat" style="margin-top: 30px"><i class="material-icons left">search</i><%= form.submit 'search', name: nil %></a>

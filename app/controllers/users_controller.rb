@@ -13,6 +13,17 @@ class UsersController < ApplicationController
     @ed_user = @follow_user.followers
   end
 
+  def edit
+  end
+
+  def update
+    if current_user.update(user_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+  
   def follows
     user = User.find(params[:id])
     @users = user.followings
@@ -20,6 +31,14 @@ class UsersController < ApplicationController
   def followers
     user = User.find(params[:id])
     @users = user.followers
+  end
+  
+
+
+  private
+
+  def user_params
+    params.require(:user).permit(:nickname, :email, :image)
   end
   
 end

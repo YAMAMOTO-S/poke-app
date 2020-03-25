@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-<%# プロフィールカード %>
+    <%# プロフィールカード %>
     <div class="col s12 center-align">
       <h2 class="header profile_header"><%= @nickname %>'s' profile</h2>
       <div class="card horizontal card2">
@@ -11,58 +11,62 @@
           <div class="card-content userinfo">
             <p><%= @nickname %></p>
             <div class="follow-count" class="follow">
-              <p style="margin-right: 30px;"><%= link_to "Follow:", follows_user_path(@follow_user.id) %> <b><%= @f_user.count %></b></p>
+              <p style="margin-right: 30px;"><%= link_to "Follow:", follows_user_path(@follow_user.id) %>
+                <b><%= @f_user.count %></b></p>
               <p><%= link_to "Follower:", followers_user_path(@follow_user.id) %> <b><%= @ed_user.count %></b></p>
             </div>
 
             <% if @user.followed_by?(current_user) %>
               <%=link_to user_relationships_path(@user.id), method: :delete do %>
-                <button class="btn-flat waves-effect waves-light followbtn" type="submit">Following
-                  <i class="material-icons right">person</i>
-                </button>
+              <button class="btn-flat waves-effect waves-light followbtn" type="submit">Following
+                <i class="material-icons right">person</i>
+              </button>
               <% end %>
-            <% elsif @user.id == current_user.id %>      
+            <% elsif @user.id == current_user.id %>
             <% else %>
               <%=link_to user_relationships_path(@user.id), method: :post do %>
-                <button class="btn-flat waves-effect waves-light followbtn" type="submit">Follow
-                  <i class="material-icons right">person_add</i>
-                </button>
+              <button class="btn-flat waves-effect waves-light followbtn" type="submit">Follow
+                <i class="material-icons right">person_add</i>
+              </button>
               <% end %>
+            <% end %>
+
+            <% if current_user.id == @user.id %>
+            <br><br>
+              <%= link_to 'Edit user info', edit_user_path(current_user) %>
             <% end %>
           </div>
         </div>
       </div>
-
     </div>
 
-<%# 所持ポケモン一覧 %>
+    <%# 所持ポケモン一覧 %>
     <div class="col s12 havepokemons">
       <h5><%= @nickname %>'s pokemon</h5>
       <div class="col s12 havepokemon card card3">
-      <% @pokemons.each do |pokemon|  %>
+        <% @pokemons.each do |pokemon|  %>
         <div class="card-content">
           <%= link_to "/pokemons/#{pokemon.id}"  do %>
-            <%= image_tag(pokemon.image_url, size: "200") %>
+          <%= image_tag(pokemon.image_url, size: "150") %>
           <% end %>
         </div>
-      <% end %>
+        <% end %>
       </div>
     </div>
 
-<%# お気に入り一覧 %>
+    <%# お気に入り一覧 %>
     <div class="col s12 havepokemons">
       <h5>favorite's pokemon</h5>
       <div class="col s12 havepokemon card card3">
-      <% @fav_pokemons.each do |pokemon|  %>
+        <% @fav_pokemons.each do |pokemon|  %>
         <div class="card-content">
           <%= link_to "/pokemons/#{pokemon.id}"  do %>
-            <%= image_tag(pokemon.image_url, size: "200") %>
+          <%= image_tag(pokemon.image_url, size: "150") %>
           <% end %>
         </div>
-      <% end %>
+        <% end %>
       </div>
     </div>
-
   </div>
   <div class="footer">
   </div>
